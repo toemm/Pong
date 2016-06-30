@@ -2,6 +2,7 @@
 
 #include "Drawer.h"
 #include "KeyboardInput.h"
+#include "Level.h"
 
 
 
@@ -26,5 +27,6 @@ private:
 	bool mRunning;
 	Drawer mDrawer;
 	KeyboardInput mInput;
+	Level mLevel;
 };
 

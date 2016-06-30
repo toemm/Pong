@@ -7,7 +7,8 @@
 Drawer::Drawer()
 {
 	// SDL 
-	SDL_CreateWindowAndRenderer(SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_BORDERLESS, &mWindow, &mRenderer);
+	SDL_Init(SDL_INIT_EVERYTHING);
+	SDL_CreateWindowAndRenderer(SCREEN_WIDTH, SCREEN_HEIGHT, 0, &mWindow, &mRenderer);
 	SDL_SetWindowTitle(mWindow, GAME_NAME);
 
 	// SDL_image
@@ -39,7 +40,9 @@ Drawer::~Drawer()
 SDL_Texture *Drawer::loadImage(const std::string& filePath)
 {
 	if (mTextures.count(filePath) == 0) {
-		mTextures[filePath] = 
+		SDL_Surface *surf =  IMG_Load(filePath.c_str());
+		mTextures[filePath] = SDL_CreateTextureFromSurface(mRenderer, surf);
+		SDL_FreeSurface(surf);
 	}
 
 	return mTextures[filePath];
@@ -47,17 +50,17 @@ SDL_Texture *Drawer::loadImage(const std::string& filePath)
 
 void Drawer::blitSurface(SDL_Texture *text, SDL_Rect *sourceRect, SDL_Rect *destRect)
 {
-
+	SDL_RenderCopy(mRenderer, text, sourceRect, destRect);
 }
 
 void Drawer::flip()
 {
-
+	SDL_RenderPresent(mRenderer);
 }
 
 void Drawer::clear()
 {
-
+	SDL_RenderClear(mRenderer);
 }
 
 

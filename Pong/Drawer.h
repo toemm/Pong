@@ -8,6 +8,7 @@
 struct SDL_Texture;
 struct SDL_Window;
 struct SDL_Renderer;
+struct SDL_Rect;
 
 class Drawer
 {
@@ -29,6 +30,9 @@ public:
 	void DrawPoint(const b2Vec2& p, float32 size, const b2Color& color);
 	void DrawString(int x, int y, const char* string, ...);
 	void DrawString(const b2Vec2& p, const char* string, ...);
+
+	SDL_Renderer *getRenderer() const { return mRenderer; }
+
 
 private:
 	SDL_Renderer *mRenderer;

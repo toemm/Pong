@@ -1,11 +1,7 @@
-#include <SDL.h>
-#include <SDL_image.h>
-#include <SDL_ttf.h>
-#include <SDL_mixer.h>
-#include <Box2D\Box2D.h>
+#include "Game.h"
 
 int main(int argc, char *argv[]) {
-
+	Game game;
 
 
 	return 0;
