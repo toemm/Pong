@@ -3,6 +3,9 @@
 #include "Drawer.h"
 #include "KeyboardInput.h"
 #include "Level.h"
+#include "Player.h"
+#include "Enemy.h"
+#include "Ball.h"
 
 
 
@@ -24,9 +27,18 @@ private:
 	void Update();
 	void Render();
 
+	// Helpers
+	void registerInput();
+	void processInput();
+
 	bool mRunning;
 	Drawer mDrawer;
 	KeyboardInput mInput;
+
 	Level mLevel;
+	Ball mBall;
+	Player mPlayer;
+	Enemy mEnemy;
+
 };
 

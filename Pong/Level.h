@@ -2,21 +2,25 @@
 
 struct SDL_Texture;
 class Drawer;
+class b2World;
+class b2Body;
 
 class Level
 {
 public:
-	Level() = default;
-	Level(Drawer& drawer);
+	Level();
 	~Level();
 
 
 	void render(Drawer& drawer);
 	void update();
 
-
+	b2World *World;
 
 private:
-	SDL_Texture *mBackground;
+	
+	b2Body *mTop;
+	b2Body *mBot;
+
 };
 
