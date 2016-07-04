@@ -13,6 +13,9 @@ public:
 	Ball(b2World *world);
 	~Ball();
 
+	void reset();
+	void kickoff();
+
 	void update() override;
 	void render(Drawer& drawer) override;
 

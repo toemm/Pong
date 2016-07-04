@@ -13,18 +13,21 @@ Level::Level()
 
 	// Draw top and bottom boundaries
 	b2BodyDef boundary;
-	boundary.type = b2_staticBody;
 
-	boundary.position = b2Vec2(4.0f, 5.9f);
+	boundary.position = b2Vec2(40, 59);
 	mBot = World->CreateBody(&boundary);
-	boundary.position = b2Vec2(4.0f, 0.1f);
+	boundary.position = b2Vec2(40, 1);
 	mTop = World->CreateBody(&boundary);
 
 	b2EdgeShape edge;
+	edge.Set(b2Vec2(-40, 0.0f), b2Vec2(40, 0.0f));
 
-	edge.Set(b2Vec2(-4.0f, 0.0f), b2Vec2(4.0f, 0.0f));
-	mBot->CreateFixture(&edge, 0.0f);
-	mTop->CreateFixture(&edge, 0.0f);
+	b2FixtureDef edgeFixDef;
+	edgeFixDef.shape = &edge;
+	edgeFixDef.friction = 0;
+
+	mBot->CreateFixture(&edgeFixDef);
+	mTop->CreateFixture(&edgeFixDef);
 
 }
 

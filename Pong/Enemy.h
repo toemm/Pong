@@ -13,6 +13,10 @@ public:
 	Enemy(b2World *world);
 	~Enemy();
 
+	void moveUp();
+	void moveDown();
+	void stopMoving();
+
 	void update() override;
 	void render(Drawer& drawer) override;
 

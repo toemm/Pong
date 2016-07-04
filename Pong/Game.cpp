@@ -69,6 +69,7 @@ void Game::processInput()
 		mRunning = false;
 	}
 
+	//PLAYER
 	if (mInput.isKeyHeld(SDL_SCANCODE_W)) {
 		mPlayer.moveUp();
 	}
@@ -79,6 +80,24 @@ void Game::processInput()
 
 	if (!mInput.isKeyHeld(SDL_SCANCODE_W) && !mInput.isKeyHeld(SDL_SCANCODE_S)) {
 		mPlayer.stopMoving();
+	}
+
+	//ENEMY
+	if (mInput.isKeyHeld(SDL_SCANCODE_UP)) {
+		mEnemy.moveUp();
+	}
+
+	if (mInput.isKeyHeld(SDL_SCANCODE_DOWN)) {
+		mEnemy.moveDown();
+	}
+
+	if (!mInput.isKeyHeld(SDL_SCANCODE_UP) && !mInput.isKeyHeld(SDL_SCANCODE_DOWN)) {
+		mEnemy.stopMoving();
+	}
+
+	//MISC
+	if (mInput.isKeyHeld(SDL_SCANCODE_V)) {
+		mBall.reset();
 	}
 }
 
